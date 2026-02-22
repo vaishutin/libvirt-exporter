@@ -1,6 +1,6 @@
 # Prometheus libvirt exporter
 
-Docker image is available at [dockerhub](https://hub.docker.com/r/vaishutin/libvirt-exporter).
+RUN `docker build .`
 
 RUN `docker run -p9177:9177 -v /var/run/libvirt:/var/run/libvirt vaishutin/libvirt-exporter`
 
