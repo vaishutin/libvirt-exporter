@@ -1,0 +1,306 @@
+<domain type='kvm' id='7' xmlns:qemu='http://libvirt.org/schemas/domain/qemu/1.0'>
+  <name>pyryakov-console</name>
+  <uuid>2b5769bd-db4c-47fd-bbbc-f8715b9aae4d</uuid>
+  <metadata xmlns:ns1="http://ovirt.org/vm/tune/1.0" xmlns:ovirt-vm="http://ovirt.org/vm/1.0">
+    <ns1:qos/>
+    <ovirt-vm:vm xmlns:ovirt-vm="http://ovirt.org/vm/1.0">
+    <ovirt-vm:balloonTarget type="int">2097152</ovirt-vm:balloonTarget>
+    <ovirt-vm:ballooningEnabled>true</ovirt-vm:ballooningEnabled>
+    <ovirt-vm:clusterVersion>4.7</ovirt-vm:clusterVersion>
+    <ovirt-vm:cpuPolicy>none</ovirt-vm:cpuPolicy>
+    <ovirt-vm:destroy_on_reboot type="bool">False</ovirt-vm:destroy_on_reboot>
+    <ovirt-vm:launchPaused>false</ovirt-vm:launchPaused>
+    <ovirt-vm:memGuaranteedSize type="int">2048</ovirt-vm:memGuaranteedSize>
+    <ovirt-vm:minGuaranteedMemoryMb type="int">2048</ovirt-vm:minGuaranteedMemoryMb>
+    <ovirt-vm:resumeBehavior>auto_resume</ovirt-vm:resumeBehavior>
+    <ovirt-vm:startTime type="float">1771497568.3994205</ovirt-vm:startTime>
+    <ovirt-vm:device alias="ua-2e1bc831-d6bb-494a-b414-a4321ac4b77b" mac_address="56:6f:87:09:00:00">
+        <ovirt-vm:network>portal-test</ovirt-vm:network>
+        <ovirt-vm:custom>
+            <ovirt-vm:queues>2</ovirt-vm:queues>
+        </ovirt-vm:custom>
+    </ovirt-vm:device>
+    <ovirt-vm:device devtype="disk" name="sda">
+        <ovirt-vm:domainID>b0f84faf-7a7d-4c29-bdb1-540c26223c43</ovirt-vm:domainID>
+        <ovirt-vm:guestName>/dev/sda</ovirt-vm:guestName>
+        <ovirt-vm:imageID>35f41232-7a57-4711-8ce2-e781b0e21abe</ovirt-vm:imageID>
+        <ovirt-vm:managed type="bool">False</ovirt-vm:managed>
+        <ovirt-vm:poolID>59986d52-0781-11f1-a1ce-00163e30a849</ovirt-vm:poolID>
+        <ovirt-vm:volumeID>3b116c03-3dd2-403c-be7a-785f5db38cbd</ovirt-vm:volumeID>
+        <ovirt-vm:volumeChain>
+            <ovirt-vm:volumeChainNode>
+                <ovirt-vm:domainID>b0f84faf-7a7d-4c29-bdb1-540c26223c43</ovirt-vm:domainID>
+                <ovirt-vm:imageID>35f41232-7a57-4711-8ce2-e781b0e21abe</ovirt-vm:imageID>
+                <ovirt-vm:leaseOffset type="int">121634816</ovirt-vm:leaseOffset>
+                <ovirt-vm:leasePath>/dev/b0f84faf-7a7d-4c29-bdb1-540c26223c43/leases</ovirt-vm:leasePath>
+                <ovirt-vm:path>/rhev/data-center/mnt/blockSD/b0f84faf-7a7d-4c29-bdb1-540c26223c43/images/35f41232-7a57-4711-8ce2-e781b0e21abe/3b116c03-3dd2-403c-be7a-785f5db38cbd</ovirt-vm:path>
+                <ovirt-vm:volumeID>3b116c03-3dd2-403c-be7a-785f5db38cbd</ovirt-vm:volumeID>
+            </ovirt-vm:volumeChainNode>
+        </ovirt-vm:volumeChain>
+    </ovirt-vm:device>
+    <ovirt-vm:device devtype="disk" name="sdc">
+        <ovirt-vm:managed type="bool">False</ovirt-vm:managed>
+    </ovirt-vm:device>
+    <ovirt-vm:custom>
+        <ovirt-vm:organization_name>org-vzqwl03k</ovirt-vm:organization_name>
+        <ovirt-vm:project_name>proj-esgbtk6t17xqpxd</ovirt-vm:project_name>
+    </ovirt-vm:custom>
+</ovirt-vm:vm>
+  </metadata>
+  <maxMemory slots='16' unit='KiB'>8388608</maxMemory>
+  <memory unit='KiB'>2097152</memory>
+  <currentMemory unit='KiB'>2097152</currentMemory>
+  <vcpu placement='static' current='2'>16</vcpu>
+  <iothreads>1</iothreads>
+  <cputune>
+    <period>100000</period>
+    <quota>-1</quota>
+    <vcpupin vcpu='0' cpuset='0-95'/>
+    <vcpupin vcpu='1' cpuset='0-95'/>
+  </cputune>
+  <resource>
+    <partition>/machine</partition>
+  </resource>
+  <sysinfo type='smbios'>
+    <system>
+      <entry name='manufacturer'>zVirt</entry>
+      <entry name='product'>zVirtNode</entry>
+      <entry name='version'>7.3-56.el7c</entry>
+      <entry name='serial'>a7d7b19c-464e-11ee-9fcc-3a68ddbae4ab</entry>
+      <entry name='uuid'>2b5769bd-db4c-47fd-bbbc-f8715b9aae4d</entry>
+      <entry name='family'>zVirt</entry>
+    </system>
+  </sysinfo>
+  <os>
+    <type arch='x86_64' machine='pc-q35-4.1'>hvm</type>
+    <smbios mode='sysinfo'/>
+  </os>
+  <features>
+    <acpi/>
+    <vmcoreinfo state='on'/>
+  </features>
+  <cpu mode='custom' match='exact' check='full'>
+    <model fallback='forbid'>Icelake-Server-noTSX</model>
+    <topology sockets='16' dies='1' clusters='1' cores='1' threads='1'/>
+    <feature policy='disable' name='mpx'/>
+    <feature policy='disable' name='intel-pt'/>
+    <feature policy='require' name='hypervisor'/>
+    <numa>
+      <cell id='0' cpus='0-15' memory='2097152' unit='KiB'/>
+    </numa>
+  </cpu>
+  <clock offset='variable' adjustment='0' basis='utc'>
+    <timer name='rtc' tickpolicy='catchup'/>
+    <timer name='pit' tickpolicy='delay'/>
+    <timer name='hpet' present='no'/>
+  </clock>
+  <on_poweroff>destroy</on_poweroff>
+  <on_reboot>restart</on_reboot>
+  <on_crash>destroy</on_crash>
+  <pm>
+    <suspend-to-mem enabled='no'/>
+    <suspend-to-disk enabled='no'/>
+  </pm>
+  <devices>
+    <emulator>/usr/bin/qemu-system-x86_64</emulator>
+    <disk type='file' device='cdrom'>
+      <driver name='qemu' error_policy='report'/>
+      <source startupPolicy='optional'/>
+      <target dev='sdc' bus='sata'/>
+      <readonly/>
+      <alias name='ua-613d684b-b86e-4df9-a54f-ed374c5d9f92'/>
+      <address type='drive' controller='0' bus='0' target='0' unit='2'/>
+    </disk>
+    <disk type='block' device='disk' snapshot='no'>
+      <driver name='qemu' type='qcow2' cache='none' error_policy='stop' io='native'/>
+      <source dev='/rhev/data-center/mnt/blockSD/b0f84faf-7a7d-4c29-bdb1-540c26223c43/images/35f41232-7a57-4711-8ce2-e781b0e21abe/3b116c03-3dd2-403c-be7a-785f5db38cbd' index='1'>
+        <seclabel model='dac' relabel='no'/>
+      </source>
+      <backingStore/>
+      <target dev='sda' bus='scsi'/>
+      <serial>35f41232-7a57-4711-8ce2-e781b0e21abe</serial>
+      <boot order='1'/>
+      <alias name='ua-35f41232-7a57-4711-8ce2-e781b0e21abe'/>
+      <address type='drive' controller='0' bus='0' target='0' unit='0'/>
+    </disk>
+    <controller type='pci' index='1' model='pcie-root-port'>
+      <model name='pcie-root-port'/>
+      <target chassis='1' port='0x10'/>
+      <alias name='pci.1'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x02' function='0x0' multifunction='on'/>
+    </controller>
+    <controller type='pci' index='2' model='pcie-root-port'>
+      <model name='pcie-root-port'/>
+      <target chassis='2' port='0x11'/>
+      <alias name='pci.2'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x02' function='0x1'/>
+    </controller>
+    <controller type='pci' index='3' model='pcie-root-port'>
+      <model name='pcie-root-port'/>
+      <target chassis='3' port='0x12'/>
+      <alias name='pci.3'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x02' function='0x2'/>
+    </controller>
+    <controller type='pci' index='4' model='pcie-root-port'>
+      <model name='pcie-root-port'/>
+      <target chassis='4' port='0x13'/>
+      <alias name='pci.4'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x02' function='0x3'/>
+    </controller>
+    <controller type='pci' index='5' model='pcie-root-port'>
+      <model name='pcie-root-port'/>
+      <target chassis='5' port='0x14'/>
+      <alias name='pci.5'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x02' function='0x4'/>
+    </controller>
+    <controller type='pci' index='6' model='pcie-root-port'>
+      <model name='pcie-root-port'/>
+      <target chassis='6' port='0x15'/>
+      <alias name='pci.6'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x02' function='0x5'/>
+    </controller>
+    <controller type='pci' index='7' model='pcie-root-port'>
+      <model name='pcie-root-port'/>
+      <target chassis='7' port='0x16'/>
+      <alias name='pci.7'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x02' function='0x6'/>
+    </controller>
+    <controller type='pci' index='8' model='pcie-root-port'>
+      <model name='pcie-root-port'/>
+      <target chassis='8' port='0x17'/>
+      <alias name='pci.8'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x02' function='0x7'/>
+    </controller>
+    <controller type='pci' index='9' model='pcie-root-port'>
+      <model name='pcie-root-port'/>
+      <target chassis='9' port='0x18'/>
+      <alias name='pci.9'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x0' multifunction='on'/>
+    </controller>
+    <controller type='pci' index='10' model='pcie-root-port'>
+      <model name='pcie-root-port'/>
+      <target chassis='10' port='0x19'/>
+      <alias name='pci.10'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x1'/>
+    </controller>
+    <controller type='pci' index='11' model='pcie-root-port'>
+      <model name='pcie-root-port'/>
+      <target chassis='11' port='0x1a'/>
+      <alias name='pci.11'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x2'/>
+    </controller>
+    <controller type='pci' index='12' model='pcie-root-port'>
+      <model name='pcie-root-port'/>
+      <target chassis='12' port='0x1b'/>
+      <alias name='pci.12'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x3'/>
+    </controller>
+    <controller type='pci' index='13' model='pcie-root-port'>
+      <model name='pcie-root-port'/>
+      <target chassis='13' port='0x1c'/>
+      <alias name='pci.13'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x4'/>
+    </controller>
+    <controller type='pci' index='14' model='pcie-root-port'>
+      <model name='pcie-root-port'/>
+      <target chassis='14' port='0x1d'/>
+      <alias name='pci.14'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x5'/>
+    </controller>
+    <controller type='pci' index='15' model='pcie-root-port'>
+      <model name='pcie-root-port'/>
+      <target chassis='15' port='0x1e'/>
+      <alias name='pci.15'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x6'/>
+    </controller>
+    <controller type='pci' index='16' model='pcie-root-port'>
+      <model name='pcie-root-port'/>
+      <target chassis='16' port='0x1f'/>
+      <alias name='pci.16'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x7'/>
+    </controller>
+    <controller type='pci' index='0' model='pcie-root'>
+      <alias name='pcie.0'/>
+    </controller>
+    <controller type='virtio-serial' index='0' ports='16'>
+      <alias name='ua-b57f2249-b82c-405e-abaa-2a923695c17c'/>
+      <address type='pci' domain='0x0000' bus='0x02' slot='0x00' function='0x0'/>
+    </controller>
+    <controller type='usb' index='0' model='qemu-xhci' ports='8'>
+      <alias name='ua-d581282c-51a6-43a4-b6ed-34189a12ca7f'/>
+      <address type='pci' domain='0x0000' bus='0x04' slot='0x00' function='0x0'/>
+    </controller>
+    <controller type='sata' index='0'>
+      <alias name='ide'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x1f' function='0x2'/>
+    </controller>
+    <controller type='scsi' index='0' model='virtio-scsi'>
+      <driver iothread='1'/>
+      <alias name='ua-fc63c806-cce6-4575-964d-389790f435a3'/>
+      <address type='pci' domain='0x0000' bus='0x03' slot='0x00' function='0x0'/>
+    </controller>
+    <interface type='bridge'>
+      <mac address='56:6f:87:09:00:00'/>
+      <source bridge='portal-test'/>
+      <target dev='vnet6'/>
+      <model type='virtio'/>
+      <driver name='vhost' queues='2'/>
+      <filterref filter='vdsm-no-mac-spoofing'/>
+      <link state='up'/>
+      <mtu size='1500'/>
+      <alias name='ua-2e1bc831-d6bb-494a-b414-a4321ac4b77b'/>
+      <address type='pci' domain='0x0000' bus='0x01' slot='0x00' function='0x0'/>
+    </interface>
+    <channel type='unix'>
+      <source mode='bind' path='/var/lib/libvirt/qemu/channels/2b5769bd-db4c-47fd-bbbc-f8715b9aae4d.org.qemu.guest_agent.0'/>
+      <target type='virtio' name='org.qemu.guest_agent.0' state='connected'/>
+      <alias name='channel0'/>
+      <address type='virtio-serial' controller='0' bus='0' port='1'/>
+    </channel>
+    <input type='tablet' bus='usb'>
+      <alias name='input0'/>
+      <address type='usb' bus='0' port='1'/>
+    </input>
+    <input type='mouse' bus='ps2'>
+      <alias name='input1'/>
+    </input>
+    <input type='keyboard' bus='ps2'>
+      <alias name='input2'/>
+    </input>
+    <graphics type='vnc' port='5900' autoport='yes' listen='10.11.0.11' keymap='en-us' passwdValidTo='1970-01-01T00:00:01'>
+      <listen type='network' address='10.11.0.11' network='vdsm-ovirtmgmt'/>
+    </graphics>
+    <audio id='1' type='none'/>
+    <video>
+      <model type='qxl' ram='65536' vram='32768' vgamem='16384' heads='1' primary='yes'/>
+      <alias name='ua-9f6d6d46-b965-4a83-9d2c-0938dc1bcd07'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x01' function='0x0'/>
+    </video>
+    <watchdog model='itco' action='reset'>
+      <alias name='watchdog0'/>
+    </watchdog>
+    <memballoon model='virtio'>
+      <stats period='5'/>
+      <alias name='ua-2a43541b-7156-4b34-bfd2-41697412202e'/>
+      <address type='pci' domain='0x0000' bus='0x05' slot='0x00' function='0x0'/>
+    </memballoon>
+    <rng model='virtio'>
+      <backend model='random'>/dev/urandom</backend>
+      <alias name='ua-ea65f0ab-018f-46be-be2d-967f216e60ab'/>
+      <address type='pci' domain='0x0000' bus='0x06' slot='0x00' function='0x0'/>
+    </rng>
+  </devices>
+  <seclabel type='dynamic' model='selinux' relabel='yes'>
+    <label>system_u:system_r:svirt_t:s0:c357,c763</label>
+    <imagelabel>system_u:object_r:svirt_image_t:s0:c357,c763</imagelabel>
+  </seclabel>
+  <seclabel type='dynamic' model='dac' relabel='yes'>
+    <label>+107:+107</label>
+    <imagelabel>+107:+107</imagelabel>
+  </seclabel>
+  <qemu:capabilities>
+    <qemu:add capability='blockdev'/>
+    <qemu:add capability='incremental-backup'/>
+  </qemu:capabilities>
+</domain>
+

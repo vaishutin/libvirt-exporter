@@ -19,38 +19,16 @@ type Domain struct {
 }
 
 type Metadata struct {
-	NovaInstance Instance `xml:"instance"`
+	OvirtVM OvirtVM `xml:"http://ovirt.org/vm/1.0 vm"`
 }
 
-type Instance struct {
-	NovaFlavor Flavor `xml:"flavor"`
-	NovaOwner Owner `xml:"owner"`
-	NovaName string `xml:"name"`
-	NovaRoot Root `xml:"root"`
+type OvirtVM struct {
+	Custom OvirtCustom `xml:"http://ovirt.org/vm/1.0 custom"`
 }
 
-type Flavor struct {
-	FlavorName string `xml:"name,attr"`
-}
-
-type Owner struct {
-	NovaUser User `xml:"user"`
-	NovaProject Project `xml:"project"`
-}
-
-type User struct {
-	UserName string `xml:",chardata"`
-	UserUUID string `xml:"uuid,attr"`
-}
-
-type Project struct {
-	ProjectName string `xml:",chardata"`
-	ProjectUUID string `xml:"uuid,attr"`
-}
-
-type Root struct {
-	RootType string `xml:"type,attr"`
-	RootUUID string `xml:"uuid,attr"`
+type OvirtCustom struct {
+	OrganizationName string `xml:"http://ovirt.org/vm/1.0 organization_name"`
+	ProjectName      string `xml:"http://ovirt.org/vm/1.0 project_name"`
 }
 
 type Devices struct {
