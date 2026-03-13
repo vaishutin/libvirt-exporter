@@ -4,6 +4,40 @@ RUN `docker build .`
 
 RUN `docker run -p9177:9177 -v /var/run/libvirt:/var/run/libvirt vaishutin/libvirt-exporter`
 
+# SASL (UNIX socket)
+Example files are in `example/`:
+- `example/auth.conf`
+- `example/passwd.db`
+- `example/libvirt.conf`
+
+Host setup (Ubuntu example):
+```bash
+sudo apt-get update -y
+sudo apt-get install -y libsasl2-modules libsasl2-modules-db
+
+sudo install -m 600 example/auth.conf /etc/libvirt/auth.conf
+sudo install -m 600 example/passwd.db /etc/libvirt/passwd.db
+sudo mkdir -p /etc/sasl2
+sudo install -m 600 example/libvirt.conf /etc/sasl2/libvirt.conf
+
+sudo sed -i 's/^#\\?auth_unix_rw.*/auth_unix_rw = \"sasl\"/' /etc/libvirt/libvirtd.conf
+sudo systemctl restart libvirtd
+```
+
+Run exporter with SASL:
+```bash
+docker run -d \
+  -v /var/run/libvirt:/var/run/libvirt:ro \
+  -v /etc/libvirt/auth.conf:/etc/libvirt/auth.conf:ro \
+  -v /etc/sasl2/libvirt.conf:/etc/sasl2/libvirt.conf:ro \
+  -v /etc/libvirt/passwd.db:/etc/libvirt/passwd.db:ro \
+  -e SASL_PATH=/usr/lib/sasl2 \
+  -p 9177:9177 \
+  --name libvirt-exporter \
+  libvirt-exporter \
+  --libvirt.uri=\"qemu:///system?socket=/var/run/libvirt/libvirt-sock&authfile=/etc/libvirt/auth.conf\"
+```
+
 # Metrics
 The following metrics/labels are being exported:
 

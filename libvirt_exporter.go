@@ -1116,7 +1116,7 @@ func CollectStoragePool(ch chan<- prometheus.Metric, pool libvirt.StoragePool) e
 // CollectFromLibvirt obtains Prometheus metrics from all domains in a
 // libvirt setup.
 func CollectFromLibvirt(ch chan<- prometheus.Metric, uri string) error {
-	conn, err := libvirt.NewConnect(uri)
+	conn, err := libvirt.NewConnectWithAuthDefault(uri, 0)
 	if err != nil {
 		return err
 	}
