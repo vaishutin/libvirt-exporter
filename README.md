@@ -10,20 +10,6 @@ Example files are in `example/`:
 - `example/passwd.db`
 - `example/libvirt.conf`
 
-Host setup (Ubuntu example):
-```bash
-sudo apt-get update -y
-sudo apt-get install -y libsasl2-modules libsasl2-modules-db
-
-sudo install -m 600 example/auth.conf /etc/libvirt/auth.conf
-sudo install -m 600 example/passwd.db /etc/libvirt/passwd.db
-sudo mkdir -p /etc/sasl2
-sudo install -m 600 example/libvirt.conf /etc/sasl2/libvirt.conf
-
-sudo sed -i 's/^#\\?auth_unix_rw.*/auth_unix_rw = \"sasl\"/' /etc/libvirt/libvirtd.conf
-sudo systemctl restart libvirtd
-```
-
 Run exporter with SASL:
 ```bash
 docker run -d \
