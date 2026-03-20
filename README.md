@@ -1,14 +1,31 @@
 # Prometheus libvirt exporter
 
-RUN `docker build .`
+Build:
+```bash
+docker build -t libvirt-exporter .
+```
 
-RUN `docker run -p9177:9177 -v /var/run/libvirt:/var/run/libvirt vaishutin/libvirt-exporter`
+Run (no SASL):
+```bash
+docker run -d --name libvirt-exporter \
+  -p 9177:9177 \
+  -v /var/run/libvirt:/var/run/libvirt:ro \
+  libvirt-exporter \
+  --libvirt.uri="qemu:///system?socket=/var/run/libvirt/libvirt-sock"
+```
+
+Verify:
+```bash
+curl -sS http://127.0.0.1:9177/metrics | grep -E '^libvirt_up'
+```
 
 # SASL (UNIX socket)
 Example files are in `example/`:
 - `example/auth.conf`
 - `example/passwd.db`
 - `example/libvirt.conf`
+
+Note: when SASL is enabled, libvirt expects credentials. Pass `authfile` in the URI, otherwise it will try to prompt for login and the exporter will exit.
 
 Run exporter with SASL:
 ```bash
@@ -21,7 +38,7 @@ docker run -d \
   -p 9177:9177 \
   --name libvirt-exporter \
   libvirt-exporter \
-  --libvirt.uri=\"qemu:///system?socket=/var/run/libvirt/libvirt-sock&authfile=/etc/libvirt/auth.conf\"
+  --libvirt.uri="qemu:///system?socket=/var/run/libvirt/libvirt-sock&authfile=/etc/libvirt/auth.conf"
 ```
 
 # Metrics
